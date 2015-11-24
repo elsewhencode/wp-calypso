@@ -2,10 +2,7 @@
 
 echo "\nBy contributing to this project, you license the materials you contribute under the GNU General Public License v2 (or later). All materials must have GPLv2 compatible licenses — see CONTRIBUTING.md for details.\n\n"
 
-if ! $(command -v node >/dev/null 2>&1); then
-	echo "\nnode not found in PATH. Skipping checks…\n"
-	exit 0
-fi
+PATH="/usr/local/bin:$PATH"
 
 files=$(git diff --cached --name-only --diff-filter=ACM | grep ".jsx*$")
 if [ "$files" = "" ]; then
