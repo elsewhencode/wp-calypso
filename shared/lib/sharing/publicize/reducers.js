@@ -67,8 +67,9 @@ export function connections( state = {}, action ) {
 export function connectionsBySiteId( state = {}, action ) {
 	switch ( action.type ) {
 		case RECEIVE_PUBLICIZE_CONNECTIONS:
-			state = Object.assign( {}, state );
-			state[ action.siteId ] = action.data.connections.map( ( connection ) => connection.ID );
+			state = Object.assign( {}, state, {
+				[ action.siteId ]: action.data.connections.map( ( connection ) => connection.ID )
+			} );
 			break;
 	}
 
