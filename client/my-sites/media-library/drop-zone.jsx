@@ -45,6 +45,15 @@ module.exports = React.createClass( {
 	},
 
 	isValidTransfer: function( transfer ) {
+		// Firefox will claim that images dragged from within the same page are
+		// files, but will also identify them with a `mozSourceNode` attribute.
+		// This value will be `null` for files dragged from outside the page.
+		//
+		// See: https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/mozSourceNode
+		if ( transfer.mozSourceNode ) {
+			return false;
+		}
+
 		// `types` is a DOMStringList, which is treated as an array in Chrome,
 		// but as an array-like object in Firefox. Therefore, we call `indexOf`
 		// using the Array prototype. Safari may pass types as `null` which
