@@ -8,7 +8,7 @@ var React = require( 'react' ),
  * Internal dependencies
  */
 var Gravatar = require( 'components/gravatar' ),
-  formatting = require( 'lib/formatting' ),
+	formatting = require( 'lib/formatting' ),
 	eventRecorder = require( 'me/event-recorder' );
 
 module.exports = React.createClass( {
